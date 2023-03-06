@@ -7,8 +7,8 @@ import '../model/movie_details.dart';
 import 'api_config.dart';
 
 class MovieApi {
-  static Future<List<Movie>> discover() async {
-    const path = 'discover/movie';
+  static Future<List<Movie>> popular() async {
+    const path = 'movie/popular';
     final uri = ApiConfing.gerateUrl(path);
     final response = await http.get(uri);
     final json = jsonDecode(response.body);

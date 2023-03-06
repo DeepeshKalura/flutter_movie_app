@@ -32,7 +32,7 @@ class _MovieTabState extends State<MovieTab> {
   }
 
   Future<void> fetchMovies() async {
-    final response = await MovieApi.discover();
+    final response = await MovieApi.popular();
     setState(() {
       discoverMovies = response;
     });
