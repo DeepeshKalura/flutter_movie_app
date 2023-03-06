@@ -3,6 +3,7 @@ import 'dart:math' as math;
 import 'package:flutter/material.dart';
 
 import '../controller/movie_api.dart';
+import '../model/cast_model.dart';
 import '../model/movie.dart';
 import 'widgets/dummy_movie_card.dart';
 
@@ -15,6 +16,8 @@ class DummyHomeScreen extends StatefulWidget {
 
 class _DummyHomeScreenState extends State<DummyHomeScreen> {
   List<Movie> popularMovies = [];
+  List<Cast> castOfMovie = [];
+  int? movieId;
   int intialPage = 1;
   PageController _pageController = PageController(
     initialPage: 1,
@@ -28,6 +31,7 @@ class _DummyHomeScreenState extends State<DummyHomeScreen> {
       viewportFraction: 0.8,
     );
     fetchMovies();
+    fetchCast();
   }
 
   @override
@@ -65,11 +69,13 @@ class _DummyHomeScreenState extends State<DummyHomeScreen> {
             value = ((value.abs() * 0.038)).clamp(-1.0, 1.0);
           }
           final movie = popularMovies[index];
+          movieId = movie.id;
+          final cast = castOfMovie[index];
           return Center(
             child: SizedBox(
               child: Transform.rotate(
                 angle: math.pi * value,
-                child: DummyMovieCard(movie: movie),
+                child: DummyMovieCard(movie: movie, cast: cast),
               ),
             ),
           );
@@ -79,6 +85,13 @@ class _DummyHomeScreenState extends State<DummyHomeScreen> {
     final response = await MovieApi.popular();
     setState(() {
       popularMovies = response;
+    });
+  }
+
+  Future<void> fetchCast() async {
+    final cast = await MovieApi.fetchCast(movieId ?? 315162);
+    setState(() {
+      castOfMovie = cast;
     });
   }
 }

@@ -1,14 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_movie_app/view/widget/cast_card.dart';
 
+import '../../../model/cast_model.dart';
 import '../../../model/movie.dart';
 import '../../widget/flight_shuttle.dart';
 import '../../widget/top_section.dart';
 
 class MovieScreen extends StatefulWidget {
   final Movie movie;
+  final Cast cast;
   const MovieScreen({
     Key? key,
     required this.movie,
+    required this.cast,
   }) : super(key: key);
 
   @override
@@ -16,6 +20,11 @@ class MovieScreen extends StatefulWidget {
 }
 
 class _MovieScreenState extends State<MovieScreen> {
+  @override
+  void initState() {
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     final posterUrl =
@@ -25,6 +34,9 @@ class _MovieScreenState extends State<MovieScreen> {
     final title = widget.movie.title;
     final description = widget.movie.overview;
     final movieId = widget.movie.id;
+    final name = widget.cast.name;
+    final character = widget.cast.character;
+    final imageUrl = 'http://image.tmdb.org/t/p/w500${widget.cast.profilePath}';
 
     return Scaffold(
       appBar: AppBar(
@@ -52,6 +64,7 @@ class _MovieScreenState extends State<MovieScreen> {
               ),
             ),
           ),
+          CastCard(name: name, character: character, imageUrl: imageUrl),
         ],
       ),
     );

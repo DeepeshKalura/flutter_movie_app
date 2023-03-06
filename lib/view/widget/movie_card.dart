@@ -1,13 +1,16 @@
 import 'package:flutter/material.dart';
 
+import '../../model/cast_model.dart';
 import '../../model/movie.dart';
 import '../screen/movie/movie_screen.dart';
 
 class MovieCard extends StatelessWidget {
   final Movie movie;
+  final Cast cast;
   const MovieCard({
     Key? key,
     required this.movie,
+    required this.cast,
   }) : super(key: key);
 
   @override
@@ -82,7 +85,10 @@ class MovieCard extends StatelessWidget {
   void navigateDetailPage(BuildContext context, Movie movie) {
     final route = MaterialPageRoute(
       builder: (context) {
-        return MovieScreen(movie: movie);
+        return MovieScreen(
+          movie: movie,
+          cast: cast,
+        );
       },
     );
     Navigator.push(context, route);
