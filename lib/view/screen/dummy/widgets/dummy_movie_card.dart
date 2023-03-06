@@ -36,7 +36,7 @@ class _DummyMovieCardState extends State<DummyMovieCard> {
           )
         : InkWell(
             onTap: () => navigateDetailPage(context, widget.movie),
-            onDoubleTap: () => print('Double Tap'),
+            onDoubleTap: () async {},
             onLongPress: () => print('Long Press'),
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
