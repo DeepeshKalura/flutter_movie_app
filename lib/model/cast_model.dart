@@ -6,7 +6,7 @@ class Cast {
   final String name;
   final String originalName;
   final double popularity;
-  final String? profilePath;
+  String? profilePath;
   final int castId;
   final String character;
   final String creditId;
