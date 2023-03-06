@@ -2,9 +2,9 @@ import 'dart:math' as math;
 
 import 'package:flutter/material.dart';
 
-import '../controller/movie_api.dart';
-import '../model/cast_model.dart';
-import '../model/movie.dart';
+import '../../../controller/movie_api.dart';
+import '../../../model/cast_model.dart';
+import '../../../model/movie.dart';
 import 'widgets/dummy_movie_card.dart';
 
 class DummyHomeScreen extends StatefulWidget {

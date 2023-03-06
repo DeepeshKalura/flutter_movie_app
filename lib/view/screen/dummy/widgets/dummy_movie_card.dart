@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-import '../../model/cast_model.dart';
-import '../../model/movie.dart';
-import '../../view/screen/movie/movie_screen.dart';
+import '../../../../model/cast_model.dart';
+import '../../../../model/movie.dart';
+import '../../movie/movie_screen.dart';
 
 class DummyMovieCard extends StatelessWidget {
   const DummyMovieCard({super.key, required this.movie, required this.cast});
