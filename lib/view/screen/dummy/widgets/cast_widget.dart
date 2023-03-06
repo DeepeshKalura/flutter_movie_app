@@ -14,7 +14,6 @@ class CastWidget extends StatefulWidget {
 class _CastWidgetState extends State<CastWidget> {
   @override
   Widget build(BuildContext context) {
-    String? castUrl;
     return ConstrainedBox(
       constraints: const BoxConstraints(maxHeight: 200, maxWidth: 1000),
       child: ListView.builder(
@@ -24,18 +23,7 @@ class _CastWidgetState extends State<CastWidget> {
           itemCount: widget.castList.length,
           itemBuilder: (context, index) {
             final cast = widget.castList[index];
-            final profilePath = cast.profilePath;
-            if (profilePath == null) {
-              castUrl = 'https://www.computerhope.com/jargon/g/guest-user.png';
-            } else {
-              castUrl = 'https://image.tmdb.org/t/p/w500${cast.profilePath}';
-            }
-            return CastCard(
-              character: cast.character,
-              imageUrl: castUrl ??
-                  'https://www.computerhope.com/jargon/g/guest-user.png',
-              name: cast.name,
-            );
+            return CastCard(cast: cast);
           }),
     );
   }

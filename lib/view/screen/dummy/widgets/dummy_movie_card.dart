@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../../../constant/showsnackbar.dart';
+import '../../../../controller/fiebase_controller.dart';
 import '../../../../controller/movie_api.dart';
 import '../../../../model/cast_model.dart';
 import '../../../../model/movie.dart';
@@ -15,6 +17,7 @@ class DummyMovieCard extends StatefulWidget {
 
 class _DummyMovieCardState extends State<DummyMovieCard> {
   List<Cast> castOfMovie = [];
+  final FirebaseController _firebaseController = FirebaseController();
   var isFetchingCast = false;
   late int movieId;
   @override
@@ -36,8 +39,14 @@ class _DummyMovieCardState extends State<DummyMovieCard> {
           )
         : InkWell(
             onTap: () => navigateDetailPage(context, widget.movie),
-            onDoubleTap: () async {},
-            onLongPress: () => print('Long Press'),
+            onDoubleTap: () async {
+              String res = await _firebaseController.saveFavorite(widget.movie);
+              showCustomSnackbar(context, res);
+            },
+            onLongPress: () async {
+              await _firebaseController.saveWatchlist(widget.movie);
+              showCustomSnackbar(context, 'Added to watchlist');
+            },
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
               child: Column(

@@ -4,7 +4,11 @@ import 'package:flutter/material.dart';
 
 import '../../../controller/movie_api.dart';
 import '../../../model/movie.dart';
+import '../helper/favorite_screen.dart';
+import '../helper/search_screen.dart';
+import '../helper/watchlist.dart';
 import 'widgets/dummy_movie_card.dart';
+import 'widgets/search_widget.dart';
 
 class DummyHomeScreen extends StatefulWidget {
   const DummyHomeScreen({super.key});
@@ -15,7 +19,10 @@ class DummyHomeScreen extends StatefulWidget {
 
 class _DummyHomeScreenState extends State<DummyHomeScreen> {
   var isfetchedMovies = false;
+  var isSearchMovies = false;
+  final movieTitleEditior = TextEditingController();
   List<Movie> popularMovies = [];
+  List<Movie> searchMovies = [];
   int intialPage = 1;
   PageController _pageController = PageController(
     initialPage: 1,
@@ -35,6 +42,21 @@ class _DummyHomeScreenState extends State<DummyHomeScreen> {
   void dispose() {
     super.dispose();
     _pageController.dispose();
+    movieTitleEditior.dispose();
+  }
+
+  Future<void> onPresses(String? movieTitle) async {
+    await search(movieTitleEditior.text);
+    if (isSearchMovies == true) {
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => SearchScreen(
+            movieList: searchMovies,
+          ),
+        ),
+      );
+    }
   }
 
   @override
@@ -58,26 +80,47 @@ class _DummyHomeScreenState extends State<DummyHomeScreen> {
                   ListTile(
                     title: const Text('Favorite List'),
                     onTap: () {
-                      Navigator.pop(context);
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const FavoriteScreen(),
+                        ),
+                      );
                     },
                   ),
                   ListTile(
                     title: const Text('Watch List'),
                     onTap: () {
-                      Navigator.pop(context);
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const WatchListScreen(),
+                        ),
+                      );
                     },
                   ),
                 ],
               ),
             ),
-            body: Container(
-              padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 10),
-              child: AspectRatio(
-                aspectRatio: 0.85,
-                child: PageView.builder(
-                  controller: _pageController,
-                  itemCount: popularMovies.length,
-                  itemBuilder: (context, index) => buildMovieSlider(index),
+            body: SingleChildScrollView(
+              child: Container(
+                padding:
+                    const EdgeInsets.symmetric(vertical: 20, horizontal: 10),
+                child: Column(
+                  children: [
+                    SearchBarWidget(
+                        textEditingController: movieTitleEditior,
+                        onSumbitted: onPresses),
+                    AspectRatio(
+                      aspectRatio: 0.85,
+                      child: PageView.builder(
+                        controller: _pageController,
+                        itemCount: popularMovies.length,
+                        itemBuilder: (context, index) =>
+                            buildMovieSlider(index),
+                      ),
+                    ),
+                  ],
                 ),
               ),
             ),
@@ -109,6 +152,15 @@ class _DummyHomeScreenState extends State<DummyHomeScreen> {
     setState(() {
       popularMovies = response;
       isfetchedMovies = true;
+    });
+  }
+
+  Future<void> search(String query) async {
+    final response = await MovieApi.search(query);
+    if (!mounted) return;
+    setState(() {
+      searchMovies = response;
+      isSearchMovies = true;
     });
   }
 }
