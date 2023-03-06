@@ -43,13 +43,17 @@ class MovieApi {
   }
 
   static Future<List<Movie>> search(String query) async {
-    const path = '/search/movie/';
+    const path = '/search/movie';
     final uri = ApiConfing.gerateUrl(path: path, query: query);
     final response = await http.get(uri, headers: {
       'Content-Type': 'application/json',
     });
+    if (response.statusCode != 200) {
+      return [];
+    }
     final json = jsonDecode(response.body);
     final results = json['results'] as List<dynamic>;
+
     return results.map((e) => Movie.fromJson(e)).toList();
   }
 }

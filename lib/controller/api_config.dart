@@ -8,7 +8,8 @@ class ApiConfing {
       final uri = Uri.parse(url);
       return uri;
     } else {
-      final url = '$_baseUrl$path?api_key=$_apiKey?query=$query';
+      final url =
+          '$_baseUrl$path?api_key=$_apiKey&query=$query&page=1&include_adult=false';
       final uri = Uri.parse(url);
       return uri;
     }

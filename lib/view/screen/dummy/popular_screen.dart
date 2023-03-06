@@ -8,7 +8,6 @@ import '../helper/favorite_screen.dart';
 import '../helper/search_screen.dart';
 import '../helper/watchlist.dart';
 import 'widgets/dummy_movie_card.dart';
-import 'widgets/search_widget.dart';
 
 class DummyHomeScreen extends StatefulWidget {
   const DummyHomeScreen({super.key});
@@ -45,8 +44,8 @@ class _DummyHomeScreenState extends State<DummyHomeScreen> {
     movieTitleEditior.dispose();
   }
 
-  Future<void> onPresses(String? movieTitle) async {
-    await search(movieTitleEditior.text);
+  void onPresses(String value) async {
+    await search(value);
     if (isSearchMovies == true) {
       Navigator.push(
         context,
@@ -108,9 +107,25 @@ class _DummyHomeScreenState extends State<DummyHomeScreen> {
                     const EdgeInsets.symmetric(vertical: 20, horizontal: 10),
                 child: Column(
                   children: [
-                    SearchBarWidget(
-                        textEditingController: movieTitleEditior,
-                        onSumbitted: onPresses),
+                    Container(
+                      margin: const EdgeInsets.symmetric(
+                          horizontal: 10, vertical: 20),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(10),
+                        color: Colors.grey[300],
+                      ),
+                      child: TextField(
+                        controller: movieTitleEditior,
+                        onSubmitted: (value) {
+                          onPresses(value);
+                        },
+                        decoration: const InputDecoration(
+                          hintText: 'Search',
+                          prefixIcon: Icon(Icons.search),
+                          border: InputBorder.none,
+                        ),
+                      ),
+                    ),
                     AspectRatio(
                       aspectRatio: 0.85,
                       child: PageView.builder(

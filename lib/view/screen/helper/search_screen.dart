@@ -14,15 +14,20 @@ class SearchScreen extends StatefulWidget {
 class _SearchScreenState extends State<SearchScreen> {
   @override
   Widget build(BuildContext context) {
-    return ListView.builder(
-      itemCount: widget.movieList.length,
-      itemBuilder: (context, index) {
-        final movie = widget.movieList[index];
-        return MovieCard(
-          movie: movie,
-          cast: const [],
-        );
-      },
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Search Results'),
+      ),
+      body: ListView.builder(
+        itemCount: widget.movieList.length,
+        itemBuilder: (context, index) {
+          final movie = widget.movieList[index];
+          return MovieCard(
+            movie: movie,
+            cast: const [],
+          );
+        },
+      ),
     );
   }
 }
