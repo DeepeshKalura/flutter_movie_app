@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_movie_app/view/widget/cast_card.dart';
+import 'package:flutter_movie_app/view/screen/dummy/widgets/cast_widget.dart';
 
 import '../../../model/cast_model.dart';
 import '../../../model/movie.dart';
@@ -8,7 +8,7 @@ import '../../widget/top_section.dart';
 
 class MovieScreen extends StatefulWidget {
   final Movie movie;
-  final Cast cast;
+  final List<Cast> cast;
   const MovieScreen({
     Key? key,
     required this.movie,
@@ -34,9 +34,6 @@ class _MovieScreenState extends State<MovieScreen> {
     final title = widget.movie.title;
     final description = widget.movie.overview;
     final movieId = widget.movie.id;
-    final name = widget.cast.name;
-    final character = widget.cast.character;
-    final imageUrl = 'http://image.tmdb.org/t/p/w500${widget.cast.profilePath}';
 
     return Scaffold(
       appBar: AppBar(
@@ -64,7 +61,7 @@ class _MovieScreenState extends State<MovieScreen> {
               ),
             ),
           ),
-          CastCard(name: name, character: character, imageUrl: imageUrl),
+          CastWidget(castList: widget.cast),
         ],
       ),
     );

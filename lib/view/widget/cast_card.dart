@@ -7,11 +7,12 @@ class CastCard extends StatelessWidget {
   final String character;
   final String imageUrl;
 
-  const CastCard(
-      {super.key,
-      required this.name,
-      required this.character,
-      required this.imageUrl});
+  const CastCard({
+    super.key,
+    required this.name,
+    required this.character,
+    required this.imageUrl,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -19,12 +20,12 @@ class CastCard extends StatelessWidget {
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(10),
       ),
-      child: Row(
+      child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Container(
-            width: 100,
-            height: 150,
+            width: 70,
+            height: 100,
             decoration: BoxDecoration(
               borderRadius: const BorderRadius.only(
                 topLeft: Radius.circular(10),
@@ -39,7 +40,7 @@ class CastCard extends StatelessWidget {
           const SizedBox(width: 10),
           Expanded(
             child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 const SizedBox(height: 10),
                 Text(

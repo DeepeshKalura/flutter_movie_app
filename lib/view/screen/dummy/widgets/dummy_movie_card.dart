@@ -7,7 +7,7 @@ import '../../movie/movie_screen.dart';
 class DummyMovieCard extends StatelessWidget {
   const DummyMovieCard({super.key, required this.movie, required this.cast});
   final Movie movie;
-  final Cast cast;
+  final List<Cast> cast;
 
   @override
   Widget build(BuildContext context) {

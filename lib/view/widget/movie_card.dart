@@ -6,7 +6,7 @@ import '../screen/movie/movie_screen.dart';
 
 class MovieCard extends StatelessWidget {
   final Movie movie;
-  final Cast cast;
+  final List<Cast> cast;
   const MovieCard({
     Key? key,
     required this.movie,

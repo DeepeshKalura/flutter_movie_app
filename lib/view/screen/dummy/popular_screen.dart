@@ -46,6 +46,27 @@ class _DummyHomeScreenState extends State<DummyHomeScreen> {
       appBar: AppBar(
         title: const Text('Home Screen'),
       ),
+      drawer: Drawer(
+        child: ListView(
+          children: [
+            const DrawerHeader(
+              child: Text('Movie App'),
+            ),
+            ListTile(
+              title: const Text('Favorite List'),
+              onTap: () {
+                Navigator.pop(context);
+              },
+            ),
+            ListTile(
+              title: const Text('Watch List'),
+              onTap: () {
+                Navigator.pop(context);
+              },
+            ),
+          ],
+        ),
+      ),
       body: Container(
         padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 10),
         child: AspectRatio(
@@ -70,12 +91,11 @@ class _DummyHomeScreenState extends State<DummyHomeScreen> {
           }
           final movie = popularMovies[index];
           movieId = movie.id;
-          final cast = castOfMovie[index];
           return Center(
             child: SizedBox(
               child: Transform.rotate(
                 angle: math.pi * value,
-                child: DummyMovieCard(movie: movie, cast: cast),
+                child: DummyMovieCard(movie: movie, cast: castOfMovie),
               ),
             ),
           );
