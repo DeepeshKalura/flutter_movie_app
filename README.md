@@ -1,16 +1,19 @@
-# flutter_movie_app
+# Mr. Image
 
-A new Flutter project.
+This is a application is given as test for a intenship.
 
-## Getting Started
+## Features:
+    1. Has a Popular page which shows the most popular movies. 
+    2. Movies can be searched by Title.
+    3. Movies has three properities Title, Release data, and Poster.
+    4. Movies can be added to the favorite list.
+    5. Movies can be added from the watchList.
+    6. Has Details page which shows the details of the movie.
 
-This project is a starting point for a Flutter application.
+### How to App Images:
 
-A few resources to get you started if this is your first Flutter project:
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Future
+
+    1. This app will be upload to playstore with all the new features and better artitecture.
