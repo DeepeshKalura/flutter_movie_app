@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 
-import '../../widget/movie_card.dart';
 import 'package:flutter_movie_app/controller/fiebase_controller.dart';
+
+import 'widget/dummy_movie_card.dart';
 
 class WatchListScreen extends StatefulWidget {
   const WatchListScreen({
@@ -38,9 +39,8 @@ class _WatchListScreenState extends State<WatchListScreen> {
                 itemCount: firebaseController.movies.length,
                 itemBuilder: (context, index) {
                   final movie = firebaseController.movies[index];
-                  return MovieCard(
+                  return DummiestMovieCard(
                     movie: movie,
-                    cast: const [],
                   );
                 },
               ),

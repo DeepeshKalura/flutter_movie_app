@@ -19,18 +19,23 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Theme.of(context).primaryColor,
+      backgroundColor: Colors.greenAccent,
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
-        children: [
+        children: const [
           Center(
             child: Text(
               'The Movie App',
-              style: Theme.of(context).textTheme.headlineMedium,
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 30,
+                fontWeight: FontWeight.bold,
+              ),
             ),
           ),
-          const SizedBox(height: 50),
-          const CircularProgressIndicator(
+          SizedBox(height: 50),
+          CircularProgressIndicator(
+            value: 1,
             color: Colors.white,
           )
         ],

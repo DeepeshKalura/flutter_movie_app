@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 
-import '../../widget/movie_card.dart';
 import 'package:flutter_movie_app/controller/fiebase_controller.dart';
+
+import 'widget/dummy_movie_card.dart';
 
 class FavoriteScreen extends StatefulWidget {
   const FavoriteScreen({
@@ -38,9 +39,8 @@ class _FavoriteScreenState extends State<FavoriteScreen> {
                 itemCount: firebaseController.movies.length,
                 itemBuilder: (context, index) {
                   final movie = firebaseController.movies[index];
-                  return MovieCard(
+                  return DummiestMovieCard(
                     movie: movie,
-                    cast: const [],
                   );
                 },
               ),

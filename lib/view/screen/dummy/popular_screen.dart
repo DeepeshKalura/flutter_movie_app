@@ -79,6 +79,7 @@ class _DummyHomeScreenState extends State<DummyHomeScreen> {
                   ListTile(
                     title: const Text('Favorite List'),
                     onTap: () {
+                      Navigator.pop(context);
                       Navigator.push(
                         context,
                         MaterialPageRoute(
@@ -90,6 +91,7 @@ class _DummyHomeScreenState extends State<DummyHomeScreen> {
                   ListTile(
                     title: const Text('Watch List'),
                     onTap: () {
+                      Navigator.pop(context);
                       Navigator.push(
                         context,
                         MaterialPageRoute(
