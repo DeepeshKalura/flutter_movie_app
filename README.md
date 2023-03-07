@@ -10,8 +10,6 @@ This is a application is given as test for a intenship.
     5. Movies can be added from the watchList.
     6. Has Details page which shows the details of the movie.
 
-### How to App Images:
-
 
 
 ## Future
