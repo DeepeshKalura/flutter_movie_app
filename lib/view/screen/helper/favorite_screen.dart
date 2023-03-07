@@ -49,8 +49,7 @@ class _FavoriteScreenState extends State<FavoriteScreen> {
   }
 
   Future<void> getfetchFavoriteList() async {
-    String res = await firebaseController.getFavorite();
-    print(res);
+    await firebaseController.getFavorite();
     setState(() {
       isShowing = true;
     });

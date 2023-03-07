@@ -73,11 +73,34 @@ class _DummyHomeScreenState extends State<DummyHomeScreen> {
             drawer: Drawer(
               child: ListView(
                 children: [
-                  const DrawerHeader(
-                    child: Text('Movie App'),
+                  DrawerHeader(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: const [
+                        Text(
+                          'Mr. Movie',
+                          style: TextStyle(fontSize: 30),
+                        ),
+                        Center(
+                          child: Text(
+                            "Made by \nDeepesh Kalura",
+                            style: TextStyle(fontSize: 12),
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
                   ListTile(
-                    title: const Text('Favorite List'),
+                    title: const Text(
+                      'Favorite List',
+                      style: TextStyle(
+                        color: Color.fromARGB(255, 0, 0, 0),
+                        fontSize: 16,
+                        fontWeight: FontWeight.w400,
+                        textBaseline: TextBaseline.alphabetic,
+                      ),
+                    ),
                     onTap: () {
                       Navigator.pop(context);
                       Navigator.push(
@@ -89,7 +112,15 @@ class _DummyHomeScreenState extends State<DummyHomeScreen> {
                     },
                   ),
                   ListTile(
-                    title: const Text('Watch List'),
+                    title: const Text(
+                      'Watch List',
+                      style: TextStyle(
+                        color: Color.fromARGB(255, 0, 0, 0),
+                        fontSize: 16,
+                        fontWeight: FontWeight.w400,
+                        textBaseline: TextBaseline.alphabetic,
+                      ),
+                    ),
                     onTap: () {
                       Navigator.pop(context);
                       Navigator.push(

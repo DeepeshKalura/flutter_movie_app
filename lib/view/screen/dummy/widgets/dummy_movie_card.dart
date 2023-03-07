@@ -89,14 +89,25 @@ class _DummyMovieCardState extends State<DummyMovieCard> {
                     ),
                   ),
                   Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      const Icon(
-                        Icons.date_range,
-                        fill: 1,
-                        color: Colors.black,
+                      const Padding(
+                        padding: EdgeInsets.all(3),
+                        child: Icon(
+                          Icons.date_range,
+                          fill: 1,
+                          color: Colors.black,
+                        ),
                       ),
                       Text(
-                        widget.movie.releaseDate.toString(),
+                        widget.movie.releaseDate
+                            .toString()
+                            .replaceAll('00:00:00.000', ''),
+                        style: const TextStyle(
+                          fontSize: 16,
+                          height: 1.3,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
                     ],
                   )

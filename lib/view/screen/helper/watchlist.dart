@@ -49,8 +49,7 @@ class _WatchListScreenState extends State<WatchListScreen> {
   }
 
   Future<void> getfetchWatchList() async {
-    String res = await firebaseController.getWatchlist();
-    print(res);
+    await firebaseController.getWatchlist();
     setState(() {
       isShowing = true;
     });
